@@ -15,23 +15,22 @@
                             <TextBlock Text="{TemplateBinding Property=Content}"
                                        VerticalAlignment="Center"
                                        Margin="50,0,0,0"
-                                       FontFamily="/Fonts/#Lobster"/>
+                                       FontFamily="Exo 2 Medium"
+                                       />
 
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
             <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="0"/>
         </Style.Setters>
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
                 <Setter Property="Background" Value="#2E2E2E"/>
-                <Setter Property="BorderBrush" Value="White"/>
-                <Setter Property="BorderThickness" Value="0 0 1 0"/>
-                <Setter Property="Foreground" Value="REd"/>
+                <Setter Property="TextBlock.TextDecorations" Value="Underline"/>
             </Trigger>
         </Style.Triggers>
+        
     </Style>
 
 </ResourceDictionary>
