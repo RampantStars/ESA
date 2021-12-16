@@ -7,10 +7,9 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:hc="https://handyorg.github.io/handycontrol" x:Class="ESA.MainWindow"
         mc:Ignorable="d"
-    WindowStartupLocation="CenterScreen"
+        WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        Title="ESA" MinHeight="720" MinWidth="1080"
-    
+        Title="ESA" MinHeight="800" MinWidth="1400"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
@@ -20,8 +19,8 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         DataContext="{Binding Source={StaticResource vm}}"
         >
-        
-        
+
+
 
     <Border Background="#1E1E1E">
 
@@ -32,12 +31,12 @@
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="20"/>
-                <RowDefinition Height="75"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="91"/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" >
@@ -57,7 +56,7 @@
                        Foreground="#FED530"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
-                       FontSize="30"
+                       FontSize="50"
                        FontWeight="Bold"
                        FontFamily="Exo 2"
                        />
@@ -66,25 +65,23 @@
 
             <StackPanel Grid.Row="2" Grid.Column="0">
 
-                <RadioButton Height="50"
+                <RadioButton Content="Главная"
+                             Height="50"
                              Foreground="White"
-                             FontSize="20"
+                             FontSize="30"
                              IsChecked="True"
                              Style="{StaticResource MenuButtonTheme}"
-                             Content="Главная"
                             />
-
-
                 <RadioButton Content="Избранное"
                              Height="50"
                              Foreground="White"
-                             FontSize="20"
+                             FontSize="30"
                              IsChecked="False"
                              Style="{StaticResource MenuButtonTheme}"/>
                 <RadioButton Content="Аккаунт"
                              Height="50"
                              Foreground="White"
-                             FontSize="20"
+                             FontSize="30"
                              IsChecked="False"
                              Style="{StaticResource MenuButtonTheme}"/>
             </StackPanel>
@@ -95,47 +92,55 @@
                         HorizontalAlignment="Left"
                         Orientation="Horizontal"
                         Margin="10,0,0,0"
-                        Width="532"
-                        Background="Transparent"                        
+                        Width="813"
+                        Background="Transparent" Height="92"                        
                         >
                 <StackPanel Margin="0 0 10 0" Orientation="Horizontal" VerticalAlignment="Center" >
-                    <Label Margin="0 0 5 0" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="20" Content="Категория:"/>
-                    <ComboBox SelectedItem="{Binding SelectedCategory}" ItemsSource="{Binding Categories}" Foreground="White" materialDesign:ThemeAssist.Theme="Dark" Height="30" Width="170"  VerticalAlignment="Center">
+                    <Label Margin="0 0 5 0" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="30" Content="Категория:"/>
+                    <ComboBox SelectedItem="{Binding SelectedCategory}" ItemsSource="{Binding Categories}" Foreground="White" materialDesign:ThemeAssist.Theme="Dark" MinHeight="30" MinWidth="70"  VerticalAlignment="Center">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Name}"/>
+                                <TextBlock FontSize="20" Text="{Binding Name}"/>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
                 </StackPanel>
 
                 <StackPanel Margin="0 0 10 0" Orientation="Horizontal" VerticalAlignment="Center">
-                    <Label Margin="0 0 5 0" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="20" Content="Тип:"/>
-                    <ComboBox Foreground="White" ItemsSource="{Binding Types}" SelectedItem="{Binding SelectedType}" materialDesign:ThemeAssist.Theme="Dark" Height="30" MinWidth="70"  VerticalAlignment="Center">
+                    <Label Margin="0 0 5 0" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="30" Content="Тип:"/>
+                    <ComboBox Foreground="White" ItemsSource="{Binding Types}" SelectedItem="{Binding SelectedType}" materialDesign:ThemeAssist.Theme="Dark" MinHeight="30" MinWidth="70"  VerticalAlignment="Center">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Name}"/>
+                                <TextBlock FontSize="20" Text="{Binding Name}"/>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
                 </StackPanel>
 
+
             </StackPanel>
 
             <StackPanel Grid.Column="1"
                         Grid.Row="1"
-                        Margin="0 0 20 0"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Right"
-                        Orientation="Horizontal">
-                <TextBlock VerticalAlignment="Center" Margin="5 0 5 0" Foreground="White" FontSize="20">Влад</TextBlock>
-                <TextBlock VerticalAlignment="Center" Margin="0,0,5,0" Foreground="White" FontSize="20">Клыгин</TextBlock>
+                        Orientation="Horizontal"
+                        Margin="0 0 10 0"
+                       >
+                <TextBlock VerticalAlignment="Center" Margin="5 0 5 0" Foreground="White" FontSize="25">Влад</TextBlock>
+                <TextBlock VerticalAlignment="Center" Margin="0,0,5,0" Foreground="White" FontSize="25">Клыгин</TextBlock>
                 <Ellipse Width="64" Height="64" Margin="5,0,0,0">
                     <Ellipse.Fill>
                         <ImageBrush ImageSource="/Images/5959b2409372a.jpg" Stretch="UniformToFill"/>
                     </Ellipse.Fill>
                 </Ellipse>
             </StackPanel>
+
+
+
+            <Grid Grid.Row="3" Grid.Column="1">
+                
+            </Grid>
 
 
         </Grid>

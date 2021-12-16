@@ -105,6 +105,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="MVVM\View\AccountView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\HomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Theme\MenuButtonTheme.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -112,6 +120,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MVVM\ViewModel\MainViewModel.cs" />
+    <Compile Include="MVVM\View\AccountView.xaml.cs">
+      <DependentUpon>AccountView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -141,9 +155,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MVVM\View\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\5959b2409372a.jpg" />
   </ItemGroup>

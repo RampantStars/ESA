@@ -37,6 +37,8 @@ namespace BLL.Model
         [Column(TypeName = "money")]
         public decimal Price { get; set; }
 
+        public bool IsFavourite { get; set; }
+
         public virtual Category Category { get; set; }
 
         public virtual RegisterAge RegisterAge { get; set; }

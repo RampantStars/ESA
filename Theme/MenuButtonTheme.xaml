@@ -27,7 +27,6 @@
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
                 <Setter Property="Background" Value="#2E2E2E"/>
-                <Setter Property="TextBlock.TextDecorations" Value="Underline"/>
             </Trigger>
         </Style.Triggers>
         
