@@ -71,6 +71,10 @@ namespace BLL.Model
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<User>()
+                .Property(e => e.Money)
+                .HasPrecision(19, 4);
+
+            modelBuilder.Entity<User>()
                 .HasMany(e => e.UserSessions)
                 .WithRequired(e => e.User)
                 .WillCascadeOnDelete(false);

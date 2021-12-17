@@ -37,6 +37,9 @@ namespace BLL.Model
 
         public int Age { get; set; }
 
+        [Column(TypeName = "money")]
+        public decimal? Money { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserSessions> UserSessions { get; set; }
     }
