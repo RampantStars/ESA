@@ -1,4 +1,4 @@
-namespace BLL.Model
+namespace DAL.EF
 {
     using System;
     using System.Collections.Generic;

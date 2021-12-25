@@ -1,14 +1,17 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 
-namespace BLL.Model
+namespace DAL.EF
 {
-    public partial class ESADbContext : DbContext
+    public partial class ESADb : DbContext
     {
-        public ESADbContext()
-            : base("name=ESADbContext")
+        public List<Category> _categoryRepository;
+
+        public ESADb()
+            : base("name=ESADb")
         {
         }
 
@@ -30,6 +33,10 @@ namespace BLL.Model
                 .HasMany(e => e.Event)
                 .WithRequired(e => e.Category)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Event>()
+                .Property(e => e.Poster)
+                .IsUnicode(false);
 
             modelBuilder.Entity<Event>()
                 .Property(e => e.Price)
@@ -69,6 +76,10 @@ namespace BLL.Model
                 .HasMany(e => e.Event)
                 .WithRequired(e => e.Type)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<User>()
+                .Property(e => e.Photo)
+                .IsUnicode(false);
 
             modelBuilder.Entity<User>()
                 .Property(e => e.Money)

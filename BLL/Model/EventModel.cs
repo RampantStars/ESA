@@ -1,14 +1,34 @@
 namespace BLL.Model
 {
+    using DAL.EF;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Event")]
-    public partial class Event
+   
+    public partial class EventModel
     {
+        public EventModel() { }
+
+        public EventModel(Event @event)
+        {
+            this.ID = @event.ID;
+            this.IsFavourite = @event.IsFavourite;
+            this.Price = @event.Price;
+            this.Description = @event.Description;
+            this.IsNew = @event.IsNew;
+            this.CategoryID = @event.CategoryID;
+            this.QuantityAll = @event.QuantityAll;
+            this.Site = @event.Site;
+            this.Title = @event.Title;
+            this.Poster = @event.Poster;
+            this.RegisterAgeID = @event.RegisterAgeID;
+            this.TypeID = @event.TypeID;
+            this.StatesID = @event.StatesID;
+
+        }
         public int ID { get; set; }
 
         public int CategoryID { get; set; }
@@ -28,7 +48,7 @@ namespace BLL.Model
 
         public string Site { get; set; }
 
-        public byte[] Poster { get; set; }
+        public string Poster { get; set; }
 
         public bool IsNew { get; set; }
 
@@ -39,12 +59,6 @@ namespace BLL.Model
 
         public bool IsFavourite { get; set; }
 
-        public virtual Category Category { get; set; }
-
-        public virtual RegisterAge RegisterAge { get; set; }
-
-        public virtual States States { get; set; }
-
-        public virtual Type Type { get; set; }
+       
     }
 }

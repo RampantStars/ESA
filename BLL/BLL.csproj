@@ -50,23 +50,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Category.cs" />
-    <Compile Include="Model\ESADbContext.cs" />
-    <Compile Include="Model\Event.cs" />
-    <Compile Include="Model\EventOrganizers.cs" />
-    <Compile Include="Model\Organizer.cs" />
-    <Compile Include="Model\Place.cs" />
-    <Compile Include="Model\RegisterAge.cs" />
-    <Compile Include="Model\Session.cs" />
-    <Compile Include="Model\States.cs" />
-    <Compile Include="Model\Type.cs" />
-    <Compile Include="Model\User.cs" />
-    <Compile Include="Model\UserSessions.cs" />
+    <Compile Include="DBDataOperations.cs" />
+    <Compile Include="Interfaces\IDbOperations.cs" />
+    <Compile Include="Model\CategoryModel.cs" />
+    <Compile Include="Model\EventModel.cs" />
+    <Compile Include="Model\EventOrganizersModel.cs" />
+    <Compile Include="Model\OrganizerModel.cs" />
+    <Compile Include="Model\PlaceModel.cs" />
+    <Compile Include="Model\RegisterAgeModel.cs" />
+    <Compile Include="Model\SessionModel.cs" />
+    <Compile Include="Model\StatesModel.cs" />
+    <Compile Include="Model\TypeModel.cs" />
+    <Compile Include="Model\UserModel.cs" />
+    <Compile Include="Model\UserSessionsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{700f7283-51de-488c-9489-e4323405efe6}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

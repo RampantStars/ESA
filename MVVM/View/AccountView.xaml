@@ -31,7 +31,7 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <Image Source="/Images/5959b2409372a.jpg" StretchDirection="Both" Stretch="Fill"/>
+                    <Image Source="/Images/User/5959b2409372a.jpg" StretchDirection="Both" Stretch="Fill"/>
                     <StackPanel Background="Transparent" Grid.Row="1">
                         <GroupBox
                             Header="Имя"

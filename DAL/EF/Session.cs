@@ -1,4 +1,4 @@
-namespace BLL.Model
+namespace DAL.EF
 {
     using System;
     using System.Collections.Generic;
@@ -6,22 +6,25 @@ namespace BLL.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Category")]
-    public partial class Category
+    [Table("Session")]
+    public partial class Session
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Category()
+        public Session()
         {
-            Event = new HashSet<Event>();
+            UserSessions = new HashSet<UserSessions>();
         }
 
         public int ID { get; set; }
 
-        [Required]
-        [StringLength(25)]
-        public string Name { get; set; }
+        [Column(TypeName = "date")]
+        public DateTime Date { get; set; }
+
+        public int EventOrganizersID { get; set; }
+
+        public virtual EventOrganizers EventOrganizers { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Event> Event { get; set; }
+        public virtual ICollection<UserSessions> UserSessions { get; set; }
     }
 }

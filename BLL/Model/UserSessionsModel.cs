@@ -1,13 +1,23 @@
 namespace BLL.Model
 {
+    using DAL.EF;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class UserSessions
+    public partial class UserSessionsModel
     {
+        public UserSessionsModel() { }
+        public UserSessionsModel(UserSessions userSessions)
+        {
+            this.UserID = userSessions.UserID;
+            this.SessionID = userSessions.SessionID;
+            this.Quantity = userSessions.Quantity;
+            this.ID = userSessions.ID;
+        }
+
         public int ID { get; set; }
 
         public int SessionID { get; set; }
@@ -16,8 +26,5 @@ namespace BLL.Model
 
         public int? Quantity { get; set; }
 
-        public virtual Session Session { get; set; }
-
-        public virtual User User { get; set; }
     }
 }

@@ -119,6 +119,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MVVM\ViewModel\AccountViewModel.cs" />
     <Compile Include="MVVM\ViewModel\MainViewModel.cs" />
     <Compile Include="MVVM\View\AccountView.xaml.cs">
       <DependentUpon>AccountView.xaml</DependentUpon>
@@ -155,9 +156,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Images\5959b2409372a.jpg" />
+    <Resource Include="Images\User\5959b2409372a.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="idea.ico" />
@@ -166,6 +166,10 @@
     <ProjectReference Include="BLL\BLL.csproj">
       <Project>{74A9B05B-BCA8-4F94-9938-ED98F5182AB8}</Project>
       <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="DAL\DAL.csproj">
+      <Project>{700F7283-51DE-488C-9489-E4323405EFE6}</Project>
+      <Name>DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
