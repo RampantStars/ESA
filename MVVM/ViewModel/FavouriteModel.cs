@@ -1,39 +1,24 @@
-﻿using DevExpress.Mvvm;
+﻿using BLL.Interfaces;
+using BLL.Model;
+using DevExpress.Mvvm;
+using ESA.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BLL.Interfaces;
-using BLL.Model;
-using System.Collections.ObjectModel;
 using System.Windows.Input;
-using ESA.Core;
-using System.Windows;
 
 namespace ESA.MVVM.ViewModel
 {
-    internal class HomeViewModel : BindableBase
+    internal class FavouriteModel : BindableBase
     {
         IFilterService filterService;
         IDbOperations dbOperations;
         IBagService bagService;
 
-        #region Новые события
 
-        public void IsNewFunc()
-        {
-            if (_event.IsNew)
-            {
-                Events.Where(i => i.ID == _event.ID).FirstOrDefault().IsNew = false;
-                _event.IsNew = false;
-                dbOperations.Update(_event);
-            }
-        }
-        #endregion
-
-
-        public HomeViewModel(IDbOperations dbOperations, IFilterService filterService, IBagService bagService)
+        public FavouriteModel(IDbOperations dbOperations, IFilterService filterService, IBagService bagService)
         {
             this.dbOperations = dbOperations;
             this.filterService = filterService;
@@ -51,13 +36,13 @@ namespace ESA.MVVM.ViewModel
             bagService.Add(_event, int.Parse(countEvent));
         }
 
-        public ICommand ISNewCommand => new RelayCommand(o => IsNewFunc());
+
 
         public ICommand BagCommand => new RelayCommand(o => AddEventBag());
 
         public CategoryModel CurrentCategory { get; set; }
         public TypeModel CurrentType { get; set; }
-        public List<EventModel> Events => filterService.EventFilter(CurrentCategory != null ? CurrentCategory.ID : 0, CurrentType != null ? CurrentType.ID : 0);
+        public List<EventModel> Events => filterService.EventFilter(CurrentCategory != null ? CurrentCategory.ID : 0, CurrentType != null ? CurrentType.ID : 0).Where(i=>i.IsFavourite==true).ToList();
 
         public string NumberAge
         {
@@ -69,20 +54,28 @@ namespace ESA.MVVM.ViewModel
             }
         }
 
-        public string countEvent { get; set; }
-
         public string IsEnablEvent
         {
             get
             {
-
-                if (_event != null && _event.QuantityAll > 0)
+                if (_event.QuantityAll > 0)
                     return "True";
                 else
                     return "False";
             }
         }
 
+        public string countEvent { get; set; }
+
+        public string Visible
+        {
+            get
+            {
+                if (_event != null)
+                    return "Visible";
+                else return "Hidden";
+            }
+        }
         public bool FavoriteButton
         {
             get
@@ -92,6 +85,8 @@ namespace ESA.MVVM.ViewModel
                     if (_event.IsFavourite != dbOperations.GetEventId(_event.ID).IsFavourite)
                     {
                         dbOperations.Update(_event);
+                        Events.RemoveAll(i=> i.ID==_event.ID);
+
                     }
                     return _event.IsFavourite;
                 }
@@ -109,16 +104,6 @@ namespace ESA.MVVM.ViewModel
             }
         }
 
-        public string Visible
-        {
-            get
-            {
-                if (_event != null)
-                    return "Visible";
-                else return "Hidden";
-            }
-        }
-
         private EventModel _event;
         public EventModel Event
         {
@@ -132,15 +117,8 @@ namespace ESA.MVVM.ViewModel
             set
             {
                 _event = value;
-                //if (_event != null
-                //    && _event.IsFavourite == dbOperations.GetEventId(_event.ID).IsFavourite)
-                //{
-
-                //    _event.IsFavourite = !_event.IsFavourite;
-                //    dbOperations.Update(_event);
-                //}
+               
             }
         }
-
     }
 }

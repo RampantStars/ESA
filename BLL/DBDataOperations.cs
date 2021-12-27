@@ -94,9 +94,11 @@ namespace BLL
             @event.Description = eventModel.Description;
             @event.Poster = eventModel.Poster;
             @event.Title = eventModel.Title;
+            db.Save();
         }
 
         public UserModel GetUser(int id) => new UserModel(db._userRepository.GetItem(id));
+        public EventModel GetEventId(int id) => new EventModel(db._eventRepository.GetItem(id));
 
 
     }

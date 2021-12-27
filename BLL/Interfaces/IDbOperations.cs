@@ -22,6 +22,7 @@ namespace BLL.Interfaces
         List<UserSessionsModel> GetUsersSessions();
 
         UserModel GetUser(int id);
+        EventModel GetEventId(int id);
 
         void Update(EventModel eventModel);
     }

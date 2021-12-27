@@ -102,12 +102,20 @@
                         </Grid>
                     </ListViewItem>
                     <ListViewItem Height="60">
+                        <Grid Background="Transparent" Width="280"> 
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDown">
+                                    <i:InvokeCommandAction Command="{Binding FavoCommand}"/>
+
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Heart" Height="30" Width="30" VerticalAlignment="Center" Margin="5"/>
                             <TextBlock Text="Избранные" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
                         </StackPanel>
+                    </Grid>
                     </ListViewItem><ListViewItem Height="60">
-                        <Grid>
+                        <Grid Background="Transparent">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="MouseDown">
                                     <i:InvokeCommandAction Command="{Binding BuyCommand}"/>

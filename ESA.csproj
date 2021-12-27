@@ -102,6 +102,7 @@
     <Compile Include="Core\RelayCommand.cs" />
     <Compile Include="MVVM\ViewModel\BagViewModel.cs" />
     <Compile Include="MVVM\ViewModel\BuyEventViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\FavouriteModel.cs" />
     <Compile Include="MVVM\View\BagView.xaml.cs">
       <DependentUpon>BagView.xaml</DependentUpon>
     </Compile>
@@ -215,9 +216,17 @@
   <ItemGroup>
     <Resource Include="Images\Music\FBf0EKhWUAAnkJ-.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\Movie\i.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Performance\scale_1200.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Musicle\7bf14b53685671.593dbd2225bf1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Music\GOJo3V.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.4.3.0\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.4.3.0\build\MaterialDesignThemes.targets')" />

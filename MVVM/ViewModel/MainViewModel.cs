@@ -28,6 +28,7 @@ namespace ESA.MVVM.ViewModel
         private AccountView AccountPage;
         private BagView BagView;
         private BuyEventView BuyEventView;
+        private FavouriteView FavouriteView;
 
 
         public Page CurrentPage { get; set; }
@@ -52,6 +53,7 @@ namespace ESA.MVVM.ViewModel
             AccountPage = new AccountView(dbOperations);
             BagView = new BagView(dbOperations, bagService, filterService, buyEventService);
             BuyEventView = new BuyEventView(dbOperations, bagService, filterService);
+            FavouriteView = new FavouriteView(dbOperations, filterService, bagService);
             CurrentPage = HomePage;
 
 
@@ -75,6 +77,10 @@ namespace ESA.MVVM.ViewModel
               CurrentPage = BuyEventView;
           });
 
+        public ICommand FavoCommand => new RelayCommand(o =>
+        {
+            CurrentPage = FavouriteView;
+        });
 
         public ObservableCollection<CategoryModel> Categories { get; set; }
 

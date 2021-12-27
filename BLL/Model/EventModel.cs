@@ -56,10 +56,10 @@ namespace BLL.Model
                     ColorBorder = "#BEF761";
                     break;
                 case 3:
-                    ColorBorder = "#FF756B";
+                    ColorBorder = "#E6E7E8";
                     break;
                 case 4:
-                    ColorBorder = "#E6E7E8";
+                    ColorBorder = "#FF756B";
                     break;
             }
 
@@ -67,9 +67,9 @@ namespace BLL.Model
                 IsNewText = "NEW";
             else IsNewText = "";
 
+
         }
 
-        
 
         public string IsNewText { get; set; }
         public string ColorBorder { get; set; }

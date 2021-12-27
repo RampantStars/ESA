@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLL.Interfaces;
+using ESA.MVVM.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +20,12 @@ namespace ESA.MVVM.View
     /// <summary>
     /// Логика взаимодействия для Favourite.xaml
     /// </summary>
-    public partial class Favourite : Page
+    public partial class FavouriteView : Page
     {
-        public Favourite()
+        public FavouriteView(IDbOperations dbOperations, IFilterService filterService, IBagService bagService)
         {
             InitializeComponent();
+            DataContext = new FavouriteModel(dbOperations, filterService, bagService);
         }
     }
 }
