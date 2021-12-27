@@ -14,7 +14,7 @@ namespace BLL.Model
         {
             this.Login=user.Login;
             this.Password=user.Password;
-            this.Money=user.Money;
+            this.Money=(int)user.Money;
             this.Photo=user.Photo;
             this.Age=user.Age;
             this.FName=user.FName;
@@ -45,7 +45,7 @@ namespace BLL.Model
         public int Age { get; set; }
 
         [Column(TypeName = "money")]
-        public decimal? Money { get; set; }
+        public int? Money { get; set; }
 
     }
 }

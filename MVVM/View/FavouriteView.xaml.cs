@@ -1,6 +1,4 @@
-﻿using BLL.Interfaces;
-using ESA.MVVM.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,18 +16,13 @@ using System.Windows.Shapes;
 namespace ESA.MVVM.View
 {
     /// <summary>
-    /// Логика взаимодействия для Page1.xaml
+    /// Логика взаимодействия для Favourite.xaml
     /// </summary>
-    public partial class AccountView : Page
+    public partial class Favourite : Page
     {
-        IDbOperations dbOperations;
-        public AccountView(IDbOperations dbOperations)
+        public Favourite()
         {
-
             InitializeComponent();
-            DataContext = new AccountViewModel(dbOperations);
         }
-
-
     }
 }

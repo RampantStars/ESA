@@ -64,7 +64,7 @@ namespace DAL.Repository
             {
                 if (EventOrganizerReposSQL == null)
                     EventOrganizerReposSQL = new EventOrganizerReposSQL(ESADb);
-                return _eventOrganizersRepository;
+                return EventOrganizerReposSQL;
             }
         }
 
@@ -84,7 +84,7 @@ namespace DAL.Repository
             {
                 if (PlaceReposSQL == null)
                     PlaceReposSQL = new PlaceReposSQL(ESADb);
-                return _placeRepository;
+                return PlaceReposSQL;
             }
         }
 
@@ -94,7 +94,7 @@ namespace DAL.Repository
             {
                 if (RegisterAgeReposSQL == null)
                     RegisterAgeReposSQL = new RegisterAgeReposSQL(ESADb);
-                return _registerAgeRepository;
+                return RegisterAgeReposSQL;
             }
         }
 
@@ -104,7 +104,7 @@ namespace DAL.Repository
             {
                 if (SessionReposSQL == null)
                     SessionReposSQL = new SessionReposSQL(ESADb);
-                return _sessionRepository;
+                return SessionReposSQL;
             }
         }
 
@@ -114,7 +114,7 @@ namespace DAL.Repository
             {
                 if (StatesReposSQL == null)
                     StatesReposSQL = new StatesReposSQL(ESADb);
-                return _statesRepository;
+                return StatesReposSQL;
             }
         }
 
@@ -124,7 +124,7 @@ namespace DAL.Repository
             {
                 if (TypeReposSQL == null)
                     TypeReposSQL = new TypeReposSQL(ESADb);
-                return _typeRepository;
+                return TypeReposSQL;
             }
         }
 
@@ -134,7 +134,7 @@ namespace DAL.Repository
             {
                 if (UserSassionsReposSQL == null)
                     UserSassionsReposSQL = new UserSassionsReposSQL(ESADb);
-                return _userSessionsRepository;
+                return UserSassionsReposSQL;
             }
         }
 

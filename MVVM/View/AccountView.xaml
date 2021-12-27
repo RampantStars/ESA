@@ -1,23 +1,15 @@
-﻿<Page xmlns:hc="https://handyorg.github.io/handycontrol"  x:Class="ESA.MVVM.View.AccountView"
+﻿<Page x:Class="ESA.MVVM.View.AccountView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
       xmlns:local="clr-namespace:ESA.MVVM.View"
       mc:Ignorable="d" 
-      d:DesignHeight="690" d:DesignWidth="1100"
-      Title="AccountView"
-      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        TextElement.FontWeight="Regular"
-        TextElement.FontSize="13"
-        TextOptions.TextFormattingMode="Ideal"
-        TextOptions.TextRenderingMode="Auto"
-        Background="#333333"
-        FontFamily="{DynamicResource MaterialDesignFont}">
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AccountView">
 
     <Grid>
-
         <Grid Grid.ColumnSpan="2" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="428*"/>
@@ -31,7 +23,7 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <Image Source="/Images/User/5959b2409372a.jpg" StretchDirection="Both" Stretch="Fill"/>
+                    <Image Source="{Binding Path=User.Photo}" StretchDirection="Both" Stretch="Fill"/>
                     <StackPanel Background="Transparent" Grid.Row="1">
                         <GroupBox
                             Header="Имя"
@@ -41,7 +33,7 @@
                             materialDesign:ShadowAssist.ShadowDepth="Depth3"
                             BorderThickness="0"
                             FontStyle="Normal">
-                            <TextBlock FontSize="30" Text="Влад" FontFamily="Exo 2 Medium" FontWeight="Normal"/>
+                            <TextBlock FontSize="30" Text="{Binding Path=User.FName}" FontFamily="Exo 2 Medium" FontWeight="Normal"/>
                         </GroupBox>
                         <GroupBox
                             Header="Фамилия"
@@ -51,7 +43,7 @@
                             materialDesign:ShadowAssist.ShadowDepth="Depth3"
                             BorderThickness="0"
                             FontStyle="Normal">
-                            <TextBlock FontSize="30" Text="Клыгин" FontFamily="Exo 2 Medium" FontWeight="Normal"/>
+                            <TextBlock FontSize="30" Text="{Binding Path=User.LName}" FontFamily="Exo 2 Medium" FontWeight="Normal"/>
                         </GroupBox>
                         <GroupBox
                             Header="Возраст"
@@ -61,7 +53,7 @@
                             materialDesign:ShadowAssist.ShadowDepth="Depth3"
                             BorderThickness="0"
                             FontStyle="Normal">
-                            <TextBlock FontSize="30" Text="19" FontFamily="Exo 2 Medium" FontWeight="Normal"/>
+                            <TextBlock FontSize="30" Text="{Binding Path=User.Age}" FontFamily="Exo 2 Medium" FontWeight="Normal"/>
                         </GroupBox>
                         <GroupBox
                             Header="Количество денег"
@@ -72,7 +64,7 @@
                             BorderThickness="0"
                             FontStyle="Normal">
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                <TextBlock Text="261" VerticalAlignment="Center"></TextBlock>
+                                <TextBlock Text="{Binding Path=User.Money}" VerticalAlignment="Center"></TextBlock>
                                 <materialDesign:PackIcon Height="40" Width="40" Kind="Dollar"/>
                             </StackPanel>
                         </GroupBox>
@@ -80,7 +72,7 @@
                 </Grid>
             </materialDesign:Card>
             <StackPanel Grid.Column="2" Orientation="Vertical">
-            <Calendar materialDesign:CalendarAssist.Orientation="Horizontal" VerticalAlignment="Top" Margin="5" HorizontalAlignment="Center" Grid.Column="2"/>
+                <Calendar materialDesign:CalendarAssist.Orientation="Horizontal" VerticalAlignment="Top" Margin="10" HorizontalAlignment="Center" Grid.Column="2"/>
             </StackPanel>
         </Grid>
     </Grid>

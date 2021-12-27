@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ESA"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:hc="https://handyorg.github.io/handycontrol" x:Class="ESA.MainWindow"
+        xmlns:hc="https://handyorg.github.io/handycontrol" 
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    x:Class="ESA.MainWindow"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
@@ -17,7 +19,7 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        DataContext="{Binding Source={StaticResource vm}}"
+        
     >
 
 
@@ -45,13 +47,13 @@
                         <materialDesign:PackIcon Foreground="#FED530" Kind="WindowMinimize"></materialDesign:PackIcon>
                     </Grid>
                     <Grid Cursor="Hand" Background="Transparent" MouseDown="PackIcon_MouseDown" VerticalAlignment="Center">
-                        <materialDesign:PackIcon Foreground="#FED530" Kind="WindowClose"></materialDesign:PackIcon>
+                        <materialDesign:PackIcon Foreground="#FED530" Kind="WindowClose"/>
                     </Grid>
                 </StackPanel>
             </Grid>
 
             <Grid Grid.Row="1" Grid.Column="0" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="Transparent">
-
+               
                 <TextBlock Text="EventAS"
                        Foreground="#FED530"
                        VerticalAlignment="Center"
@@ -63,28 +65,80 @@
             </Grid>
 
 
-            <StackPanel Grid.Row="2" Grid.Column="0">
 
-                <RadioButton Content="Главная"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="30"
-                             IsChecked="True"
-                             Style="{StaticResource MenuButtonTheme}"
-                            />
-                <RadioButton Content="Избранное"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="30"
-                             IsChecked="False"
-                             Style="{StaticResource MenuButtonTheme}"/>
-                <RadioButton Content="Аккаунт"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="30"
-                             IsChecked="False"
-                             Style="{StaticResource MenuButtonTheme}"/>
-            </StackPanel>
+            <Grid Grid.Row="2" Grid.Column="0">
+                <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Duration=0:0:0:2}">
+                    <Grid x:Name="GridCursor" Background="#FED530" Width="10" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top"/>
+                </materialDesign:TransitioningContent>
+                <ListView SelectionChanged="ListViewMenu_SelectionChanged" x:Name="ListViewMenu"  Foreground="White" FontFamily="Roboto" >
+                        <ListViewItem Height="60">
+                    <Grid Background="Transparent" Width="280">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDown">
+                                    <i:InvokeCommandAction Command="{Binding HomeViewCommand}"/>
+
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+
+
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Home" Height="30" Width="30" VerticalAlignment="Center" Margin="5"/>
+                                <TextBlock Text="Главная" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
+                            </StackPanel>
+                    </Grid>
+                        </ListViewItem>
+                    <ListViewItem Height="60">
+                        <Grid Background="Transparent" Width="280">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDown">
+                                    <i:InvokeCommandAction Command="{Binding AccountViewCommand}"/>
+
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="FormatListBulleted" Height="30" Width="30" VerticalAlignment="Center" Margin="5"/>
+                            <TextBlock Text="Аккаунт" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
+                        </StackPanel>
+                        </Grid>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Heart" Height="30" Width="30" VerticalAlignment="Center" Margin="5"/>
+                            <TextBlock Text="Избранные" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
+                        </StackPanel>
+                    </ListViewItem><ListViewItem Height="60">
+                        <Grid>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDown">
+                                    <i:InvokeCommandAction Command="{Binding BuyCommand}"/>
+
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Shopping" Height="30" Width="30" VerticalAlignment="Center" Margin="5"/>
+                            <TextBlock Text="Купленные билеты" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
+                        </StackPanel>
+                        </Grid>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <Grid Background="Transparent" Width="280">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDown">
+                                    <i:InvokeCommandAction Command="{Binding BagCommand}"/>
+
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+
+                            <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Bucket" Height="30" Width="30" VerticalAlignment="Center" Margin="5"/>
+                            <TextBlock Text="Корзина" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
+                        </StackPanel>
+                        </Grid>
+                    </ListViewItem>
+
+                </ListView>
+
+            </Grid>
 
             <StackPanel Grid.Column="1"
                         Grid.Row="1"
@@ -96,7 +150,7 @@
                         >
                 <StackPanel Margin="0 0 10 0" Orientation="Horizontal" VerticalAlignment="Center" >
                     <Label Margin="0 0 5 0" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="30" Content="Категория:"/>
-                    <ComboBox SelectedItem="{Binding SelectedCategory}" ItemsSource="{Binding Categories}" Foreground="White" materialDesign:ThemeAssist.Theme="Dark" MinHeight="30" MinWidth="70"  VerticalAlignment="Center">
+                    <ComboBox  SelectedItem="{Binding SelectedCategory}" ItemsSource="{Binding Categories}" Foreground="White" materialDesign:ThemeAssist.Theme="Dark" MinHeight="30" MinWidth="70"  VerticalAlignment="Center">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock FontSize="20" Text="{Binding Name}"/>
@@ -124,11 +178,11 @@
                         VerticalAlignment="Center"
                         HorizontalAlignment="Right"
                         Orientation="Horizontal"
-                         
+                         Margin="20,0,0,0"
                        >
                 <Label HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" FontSize="25">Влад</Label>
                 <Label HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" FontSize="25">Клыгин</Label>
-                <Ellipse  Width="64" Height="64" Margin="5,0,10,0">
+                <Ellipse  Width="64" Height="64" Margin="0,0,10,0">
                     <Ellipse.Fill>
                         <ImageBrush ImageSource="/Images/User/5959b2409372a.jpg" Stretch="UniformToFill"/>
                     </Ellipse.Fill>
@@ -138,8 +192,10 @@
 
 
 
-            <Grid Grid.Row="3" Grid.Column="1">
+            <Grid x:Name="ChildrenGrid" Grid.Row="3" Grid.Column="1">
+                <Frame NavigationUIVisibility="Hidden" Content="{Binding CurrentPage}">
 
+                </Frame>
             </Grid>
 
 

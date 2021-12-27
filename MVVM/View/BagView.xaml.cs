@@ -12,17 +12,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BLL.Interfaces;
+using ESA.MVVM.ViewModel;
 
 namespace ESA.MVVM.View
 {
     /// <summary>
-    /// Логика взаимодействия для HomeView.xaml
+    /// Логика взаимодействия для BagView.xaml
     /// </summary>
-    public partial class HomeView : Page
+    public partial class BagView : Page
     {
-        public HomeView()
+        public BagView(IDbOperations dbOperations, IBagService bagService, IFilterService filterService,IBuyEventService buyEventService)
         {
             InitializeComponent();
+            DataContext = new BagViewModel(dbOperations, bagService, filterService, buyEventService);
+
         }
     }
 }

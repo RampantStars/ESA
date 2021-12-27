@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ESA.MVVM.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BLL.Interfaces;
+using BLL.Util;
+using ESA.Util;
+using Ninject;
+using ESA.MVVM.ViewModel;
 
 namespace ESA
 {
@@ -20,12 +26,19 @@ namespace ESA
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        IDbOperations dbOperations;
+        IFilterService filterService;
+        IBagService bagService;
+        IBuyEventService buyEventService;
+        public MainWindow(IDbOperations dbOperations, IFilterService filterService, IBagService bagService,IBuyEventService buyEventService)
         {
+            DataContext = new MainViewModel(dbOperations, filterService, bagService, buyEventService);
             InitializeComponent();
+            this.bagService = bagService;
+            this.dbOperations = dbOperations;
+            this.filterService = filterService;
+            this.buyEventService = buyEventService;
         }
-
-
 
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -42,5 +55,19 @@ namespace ESA
         {
             this.WindowState = WindowState.Minimized;
         }
+
+        private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int index = ListViewMenu.SelectedIndex;
+            MoveCursorMenu(index);
+           
+            
+        }
+        private void MoveCursorMenu(int index)
+        {
+            TrainsitionigContentSlide.OnApplyTemplate();
+            GridCursor.Margin = new Thickness(0, (60 * index), 0, 0);
+        }
+
     }
 }

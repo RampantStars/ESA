@@ -7,7 +7,7 @@ namespace BLL.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-   
+
     public partial class EventModel
     {
         public EventModel() { }
@@ -16,7 +16,7 @@ namespace BLL.Model
         {
             this.ID = @event.ID;
             this.IsFavourite = @event.IsFavourite;
-            this.Price = @event.Price;
+            this.Price =(int)@event.Price;
             this.Description = @event.Description;
             this.IsNew = @event.IsNew;
             this.CategoryID = @event.CategoryID;
@@ -28,7 +28,52 @@ namespace BLL.Model
             this.TypeID = @event.TypeID;
             this.StatesID = @event.StatesID;
 
+            switch (TypeID)
+            {
+                case 1:
+                    TypeIcon = "VideoVintage";
+                    break;
+                case 2:
+                    TypeIcon = "Theater";
+                    break;
+                case 3:
+                    TypeIcon = "GuitarElectric";
+                    break;
+                case 4:
+                    TypeIcon = "DramaMasks";
+                    break;
+                case 5:
+                    TypeIcon = "DanceBallroom";
+                    break;
+            }
+
+            switch (StatesID)
+            {
+                case 1:
+                    ColorBorder = "#FFAF50";
+                        break;
+                case 2:
+                    ColorBorder = "#BEF761";
+                    break;
+                case 3:
+                    ColorBorder = "#FF756B";
+                    break;
+                case 4:
+                    ColorBorder = "#E6E7E8";
+                    break;
+            }
+
+            if (IsNew)
+                IsNewText = "NEW";
+            else IsNewText = "";
+
         }
+
+        
+
+        public string IsNewText { get; set; }
+        public string ColorBorder { get; set; }
+        public string TypeIcon { get; set; }
         public int ID { get; set; }
 
         public int CategoryID { get; set; }
@@ -54,11 +99,11 @@ namespace BLL.Model
 
         public int QuantityAll { get; set; }
 
-        [Column(TypeName = "money")]
-        public decimal Price { get; set; }
+        [Column(TypeName = "int")]
+        public int Price { get; set; }
 
         public bool IsFavourite { get; set; }
 
-       
+
     }
 }

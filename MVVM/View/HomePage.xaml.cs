@@ -1,4 +1,5 @@
 ﻿using BLL.Interfaces;
+using BLL.Model;
 using ESA.MVVM.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -18,18 +19,18 @@ using System.Windows.Shapes;
 namespace ESA.MVVM.View
 {
     /// <summary>
-    /// Логика взаимодействия для Page1.xaml
+    /// Логика взаимодействия для HomePage.xaml
     /// </summary>
-    public partial class AccountView : Page
+    public partial class HomePage : Page
     {
-        IDbOperations dbOperations;
-        public AccountView(IDbOperations dbOperations)
-        {
 
+        public HomePage(IDbOperations dbOperations, IFilterService filterService, IBagService bagService)
+        {
             InitializeComponent();
-            DataContext = new AccountViewModel(dbOperations);
+            DataContext = new HomeViewModel(dbOperations, filterService, bagService);
         }
 
+        
 
     }
 }

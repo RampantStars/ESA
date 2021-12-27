@@ -5,11 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using BLL.Interfaces;
 using BLL.Model;
+using DAL.EF;
 using DAL.Interface;
 
 namespace BLL
 {
-    internal class DBDataOperations : IDbOperations
+    public class DBDataOperations : IDbOperations
     {
         private IDbRepos db;
 
@@ -76,5 +77,27 @@ namespace BLL
         {
             db.Save();
         }
+
+        public void Update(EventModel eventModel)
+        {
+            Event @event = db._eventRepository.GetItem(eventModel.ID);
+            @event.ID = eventModel.ID;
+            @event.IsFavourite = eventModel.IsFavourite;
+            @event.IsNew = eventModel.IsNew;
+            @event.QuantityAll = eventModel.QuantityAll;
+            @event.RegisterAgeID = eventModel.RegisterAgeID;
+            @event.TypeID = eventModel.TypeID;
+            @event.StatesID = eventModel.StatesID;
+            @event.CategoryID = eventModel.CategoryID;
+            @event.Site = eventModel.Site;
+            @event.Price = eventModel.Price;
+            @event.Description = eventModel.Description;
+            @event.Poster = eventModel.Poster;
+            @event.Title = eventModel.Title;
+        }
+
+        public UserModel GetUser(int id) => new UserModel(db._userRepository.GetItem(id));
+
+
     }
 }

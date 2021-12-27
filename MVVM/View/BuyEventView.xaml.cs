@@ -18,18 +18,16 @@ using System.Windows.Shapes;
 namespace ESA.MVVM.View
 {
     /// <summary>
-    /// Логика взаимодействия для Page1.xaml
+    /// Логика взаимодействия для BuyEventView.xaml
     /// </summary>
-    public partial class AccountView : Page
+    public partial class BuyEventView : Page
     {
-        IDbOperations dbOperations;
-        public AccountView(IDbOperations dbOperations)
+        public BuyEventView(IDbOperations dbOperations, IBagService bagService, IFilterService filterService)
         {
-
             InitializeComponent();
-            DataContext = new AccountViewModel(dbOperations);
+            DataContext = new BuyEventViewModel(dbOperations, bagService, filterService);
+
         }
-
-
+       
     }
 }
